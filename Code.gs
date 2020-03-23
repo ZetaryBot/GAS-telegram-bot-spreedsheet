@@ -1,7 +1,7 @@
 var token = "<bot token>";
 
 function doGet() {
-  testSendMessage();
+
 }
 
 
@@ -17,6 +17,9 @@ function doPost(e) {
     
     // Retrieve sender's message
     var message = chat.message.text;
+    if(typeof pushData === "function"){
+        pushData('/user/' + id + '/message', message);
+    }
 
     let result = read_data(message);
     result.response.forEach(function(response, index){
