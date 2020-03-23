@@ -10,9 +10,10 @@ However, when my friend was asking for the update of response message (e.g. He w
 At first I just sent him the page above and of course he has no response replied since he has no idea about what is going on. That's why I am looking for another way in order to allow easy message updating online and let users get rid of any code updates about telegram bot.
 
 Reference pages: (Sorry for my poor English and my mother language is Traditional Chinese so the reference are also from TC)
+```
 https://letswrite.tw/telegram-bot-gas/
 https://www.wfublog.com/2017/02/google-apps-script-spreadsheet-query-read-data.html
-
+```
 ### Prerequisites
 
 Just a Google account. No worry if you dont have any programming knowledege. This guide is basically designed for newbies
