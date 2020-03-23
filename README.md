@@ -16,7 +16,8 @@ https://www.wfublog.com/2017/02/google-apps-script-spreadsheet-query-read-data.h
 ```
 ### Prerequisites
 
-Just a Google account. No worry if you dont have any programming knowledege. This guide is basically designed for newbies
+1. Google account. No worry if you dont have any programming knowledege. This guide is basically designed for newbies
+2. Telegram with account logged in
 
 
 ### System Involved
@@ -61,4 +62,66 @@ Again optional part, if you ignored Step3 please ignore this part as well
 11. ●●●●●●●●●●●●●●●●●●●●●●●●●●●●●● will be turned into a long text. It is your database secret and please keep it save. Copy it to somewhere again. (Keep it save and don't expose it to anyone!!)
 
 ### Step 4 - Create telegram bot
-WIP
+1. Open telegram
+2. Search @BotFather in telegram
+3. Enter "/newbot"
+4. Give a name to your bot (e.g. Testing Bot)
+5. Give a username to your bot (must be unique in the world, e.g. testing_xxxxx_bot)
+6. You will receive a token like "1009823562:ASFASJkAKSFJasifojsafi-BU" (Not a real token) in your message. Copy it to somewhere again. (Keep it save and don't expose it to anyone!!)
+
+### Step 5 - Put scripts online
+1. Download **Code.gs**, **firebase.gs**(Optional) and **spreadsheet.gs** from this repository
+2. Update <bot token> in **Code.gs** to your own bot token created in **Step 4**
+3. (Optional) Update <firebase secret> and <firebase database url> in to **firebase.gs** your firebase details created in **Step3**
+4. Open your Google App Script
+5. Click "File" > "New" > "Script file"
+6. Give a name "**spreadsheet**" and click "OK" button
+7. (Optional) Do (3) and (4) again to create a script for name "**firebase**" 
+8. Copy contents from downloaded files in (1) to scripts file you just added in GAP respectively (Remember to save them online!!!)
+  
+### Step 6 - Deploy your scripts
+1. Open your Google App Script
+2. Click "Publish" > "Deploy as web app..."
+3. You will see a new pop up. Remember to choose "**Anyone, even anonymous**" in "**Who has access to the app**" dropdown list and "**New**" in "**Project version**" dropdown list. Click "Deploy" button to deploy scripts
+4. You may also see a popup warning "**Authorization required**". Click "Review Permissions" button > Click your google account > Click "Allow" button in order to pass the authorization
+5. Copy the URL shown in the text field below "**Current web app URL:**", it would be used in Step 7, e.g.
+```
+https://script.google.com/macros/s/AKGagasde2y03ALSKfewsd-aLASFKasfLASKDlaksfasdkligoHS/exec
+```
+
+### Step 7 - Connect your scripts and bot
+1. Type the following URL in your browser:
+```
+https://api.telegram.org/bot<bot token created in Step 4>/setWebhook?url=<URL generated in Step 7>
+```
+e.g.
+```
+https://api.telegram.org/bot1009823562:ASFASJkAKSFJasifojsafi-BU/setWebhook?url=https://script.google.com/macros/s/AKGagasde2y03ALSKfewsd-aLASFKasfLASKDlaksfasdkligoHS/exec
+```
+2. If you can see the following text on your browser then link is successfully set
+```
+{"ok":true,"result":true,"description":"Webhook was set"}
+```
+
+### Step8: Set up messages for response
+1. Input the following data to your sheet:
+```
+A1: Message received	B1: Response message	C1: Keyboard Options
+A2: DEFAULT_ANSWER	B2: Testing   C2: Key1
+A3: test	B3: test2	C3: Key2
+```
+* Column A: Message received, what message you expected to receive from users
+* Column B: Response message, what message you expected to respond when the bot receive column A message
+* Column C-Z: Keyboard Options, optional, option list shown in keyboard. You can provide only few options to user in choose
+
+
+### Step9: Test it
+1. Search @username (**@testing_xxxxx_bot**, bot username created in Step 4) in telegram. It is your bot
+2. Start conversation with the bot
+3. Type "test" and you will see "test2" responded from the bot
+4. Done!!
+
+## Finally
+This is my first repository and feel free to leave me any comment on codes, readme file, my wordings, or anything else. Thanks for watching!
+
+
